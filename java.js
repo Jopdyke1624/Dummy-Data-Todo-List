@@ -27,52 +27,26 @@ const userInput = () => {
   const userId = document.getElementById("userId").value;
   toDo.innerHTML = "";
 
-  // const filtered =
-  arrayOfTodos
-    .filter((element) => {
-      return +userId === element.userId;
-    })
+  const filtered = arrayOfTodos.filter((element) => {
+    return +userId === element.userId;
+  });
 
-    .forEach(() => {
+  for (let i = 0; i < filtered.length; i++) {
+    const element = filtered[i];
+    console.log(userId, element.userId);
+    console.log(element);
+    if (element.completed === true ) {
+      
+    } else {
       const list = document.createElement("li");
       list.innerHTML = `
-                <p>userId: ${el.userId}</p>
-                <p>todo:${el.title}</p>
-                <p>completed:${el.completed}</p>
-            `;
+              <p>userId: ${element.userId}</p>
+              <p>todo:${element.title}</p>
+              <p>completed:${element.completed}</p>
+          `;
       toDo.appendChild(list);
-    });
-
-  // arrayOfTodos.forEach((el)=>{
-  //     if(+userId === el.userId){
-  //         const list = document.createElement("li")
-  //         list.innerHTML = `
-  //             <p>userId: ${el.userId}</p>
-  //             <p>todo:${el.title}</p>
-  //             <p>completed:${el.completed}</p>
-  //         `
-  //         toDo.appendChild(list)
-  //     }
-  // })
-
-  // const filtered = arrayOfTodos.filter((element)=>{
-  //     return +userId === element.userId
-  // })
-  // console.log(filtered)
-
-  // for (let index = 0; index <filtered.length; index++) {
-  //     const element =filtered[index];
-  //     console.log(userId, element.userId)
-  //         console.log(element)
-
-  //         const list = document.createElement("li")
-  //         list.innerHTML = `
-  //             <p>userId: ${element.userId}</p>
-  //             <p>todo:${element.title}</p>
-  //             <p>completed:${element.completed}</p>
-  //         `
-  //         toDo.appendChild(list)
-  // }
+    }
+  }
 };
 
 const logTodos = () => {
